@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Smooth Scrolling in Plain JavaScript and CSS</title>
+</head>
+<style>
+    body {
+      margin: 0;
+      font-size: 28px;
+    }
+    
+    .header {
+      background-color: #f1f1f1;
+      padding: 30px;
+      text-align: center;
+    }
+    
+    #navbar {
+      overflow: hidden;
+      background-color: #333;
+    }
+    
+    #navbar a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+    
+    #navbar a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    
+    #navbar a.active {
+      background-color: #4CAF50;
+      color: white;
+    }
+    
+    .content {
+      padding: 16px;
+    }
+    
+    .sticky {
+      position: fixed;
+      top: 0;
+      width: 100%
+    }
+    
+    .sticky + .content {
+      padding-top: 60px;
+    }
+    </style>
+
+
+<body onscroll="myFunction()">
+
+
+    <button onclick="myFunction()" style="position:fixed;">Click me to scroll</button><br><br>
+
+<p id="css-support-msg">This browser supports the <code>scroll-behavior</code> property</p>
+<h1>Title</h1>
+
+<div id="navbar">
+    <a class="active" href="javascript:void(0)">Home</a>
+    <a href="javascript:void(0)">News</a>
+    <a href="javascript:void(0)">Contact</a>
+  </div>
+
+
+<nav id="toc">
+	<ul>
+		<li><a href="#sect-1">Section 1</a></li>
+		<li><a href="#sect-2">Section 2</a></li>
+		<li><a href="#sect-3">Section 3</a></li>
+		<li><a href="#sect-4">Section 4</a></li>
+		<li><a href="#sect-5">Section 5</a></li>
+		<li><a href="#sect-6">Section 6</a></li>
+		<li><a href="#sect-7">Section 7</a></li>
+		<li><a href="#sect-8">Section 8</a></li>
+	</ul>
+</nav>
+
+
+<div class="content">
+<section id="sect-1">
+	<h2>Section 1</h2>
+	<p>Pellentesque habitant morbi tristique senectus et netus et quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+	<a href="#toc">Back to TOC</a>
+</section>
+<section id="sect-2">
+	<h2>Section 2</h2>
+	<p>Pellentesque habitant morbi tristique senectus et netus et quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+	<a href="#toc">Back to TOC</a>
+</section>
+<section id="sect-3">
+	<h2>Section 3</h2>
+	<p>Pellentesque habitant morbi tristique senectus et netus et quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+	<a href="#toc">Back to TOC</a>
+</section>
+<section id="sect-4">
+	<h2>Section 4</h2>
+	<p>Pellentesque habitant morbi tristique senectus et netus et quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+	<a href="#toc">Back to TOC</a>
+</section>
+<section id="sect-5">
+	<h2>Section 5</h2>
+	<p>Pellentesque habitant morbi tristique senectus et netus et quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+	<a href="#toc">Back to TOC</a>
+</section>
+<section id="sect-6">
+	<h2>Section 6</h2>
+	<p>Pellentesque habitant morbi tristique senectus et netus et quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+	<a href="#toc">Back to TOC</a>
+</section>
+<section id="sect-7">
+	<h2>Section 7</h2>
+	<p>Pellentesque habitant morbi tristique senectus et netus et quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+	<a href="#toc">Back to TOC</a>
+</section>
+<section id="sect-8">
+	<h2>Section 8</h2>
+	<p>Pellentesque habitant morbi tristique senectus et netus et quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+	<a href="#toc">Back to TOC</a>
+</section>
+
+
+
+
+
+
+
+</div>
+
+<script>
+
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+  navbar.classList.add("sticky")
+  } else {
+  navbar.classList.remove("sticky");
+  }
+}
+
+
+
+
+function myFunction() {
+  window.scrollBy(100, 100);
+  alert("pageXOffset: " + window.pageXOffset + ", pageYOffset: " + window.pageYOffset);
+}
+</script>
+
+
+</body>
+</html>

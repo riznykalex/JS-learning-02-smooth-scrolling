@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smooth Scrolling</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid #e7e7e7;
+            background-color: #f3f3f3;
+            position: fixed;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: #666;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #ddd;
+        }
+        .content {
+            height: 500px;
+            border: 2px solid black;
+        }
+
+
+        .button {
+            position: fixed;
+            right: 0; bottom: 0;
+            font-size: 18px;
+            width: 100px;
+            height: 50px;
+            background-color: lightcyan;
+            text-align: center;
+            margin: 8px 8px;
+        }
+
+        .scrollinfo{
+            position: fixed;
+            left: 0; bottom: 0;
+            margin: 8px 12px;
+            color: red;
+        }
+
+     </style>
+
+
+
+</head>
+<body>
+
+    <button onclick="myScroll()" style="position:fixed;">Click me to scroll</button><br><br>    
+
+<div id="menu">
+    <ul>
+        <li id="grayMenuItem"><a href="#Agray" class="menuItem">Gray</a> </li>
+        <li id="greenMenuItem"><a href="#Agreen" class="menuItem">Green</a> </li>
+        <li id="pinkMenuItem"><a href="#Apink" class="menuItem">Pink</a> </li>
+        <li id="yellowMenuItem"><a href="#Ayellow" class="menuItem">Yellow</a> </li>
+    </ul>
+
+</div>
+<div id="main">
+
+    <div id="Gray" class="content" style="background: lightgray;">
+        <a id="Agray"></a>
+    </div>
+
+    <div id="Green" class="content" style="background: lightgreen">
+        <a id="Agreen"></a>
+    </div>
+
+    <div id="Pink" class="content" style="background: lightpink">
+        <a id="Apink"></a>
+    </div>
+
+    <div id="Yellow" class="content" style="background: lightyellow">
+        <a id="Ayellow"></a>
+    </div>
+
+
+</div>
+
+
+<button class="button" onClick="toTop()">
+To top
+</button>
+
+<div id="showScroll" class="scrollinfo">
+</div>
+</body>
+
+
+
+<script>
+    function toTop() {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    
+    function myScroll() {
+        window.scrollBy(0, 50);
+        }
+ 
+</script>
+</html>

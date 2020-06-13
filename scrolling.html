@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Smooth Scrolling</title>
     <style>
+        body {margin-bottom: 100px;}
         ul {
             list-style-type: none;
             margin: 0;
@@ -35,9 +36,20 @@
         }
 
 
-        .button {
+        .buttonTop {
             position: fixed;
-            right: 0; bottom: 0;
+            right: 0; bottom: 92px;
+            font-size: 18px;
+            width: 100px;
+            height: 50px;
+            background-color: lightcyan;
+            text-align: center;
+            margin: 8px 8px;
+        }
+
+        .buttonDown {
+            position: fixed;
+            right: 100px; bottom: 92px;
             font-size: 18px;
             width: 100px;
             height: 50px;
@@ -53,21 +65,30 @@
             color: red;
         }
 
-     </style>
+        #footer {
+            position: fixed;
+            left: 0; bottom: 0;
+            padding: 10px;
+            background: darkblue;
+            color: #fff;
+            width: 100%;
+        }
+
+    </style>
 
 
 
 </head>
 <body>
 
-    <button onclick="myScroll()" style="position:fixed;">Click me to scroll</button><br><br>    
+<button class="buttonDown" onclick="downScroll()" id="downButton">Scroll Down</button><br><br>
 
 <div id="menu">
-    <ul>
-        <li id="grayMenuItem"><a href="#Agray" class="menuItem">Gray</a> </li>
-        <li id="greenMenuItem"><a href="#Agreen" class="menuItem">Green</a> </li>
-        <li id="pinkMenuItem"><a href="#Apink" class="menuItem">Pink</a> </li>
-        <li id="yellowMenuItem"><a href="#Ayellow" class="menuItem">Yellow</a> </li>
+    <ul id="selectMenu">
+        <li id="grayMenuItem"><a href="" class="menuItem">Gray</a> </li>
+        <li id="greenMenuItem"><a href="" class="menuItem">Green</a> </li>
+        <li id="pinkMenuItem"><a href="" class="menuItem">Pink</a> </li>
+        <li id="yellowMenuItem"><a href="" class="menuItem">Yellow</a> </li>
     </ul>
 
 </div>
@@ -75,47 +96,160 @@
 
     <div id="Gray" class="content" style="background: lightgray;">
         <a id="Agray"></a>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit nunc, euismod ut turpis at, sollicitudin porta lectus. Maecenas vehicula, nunc ac elementum feugiat, enim nibh commodo ante, eget dapibus lorem orci vel elit. Ut consequat tortor at arcu vestibulum consectetur. Quisque mattis augue in nulla eleifend, id cursus sapien aliquet. Pellentesque a efficitur ligula. Proin feugiat faucibus mattis. Nulla a mollis felis, eget faucibus justo. Mauris aliquet, justo in rutrum condimentum, ligula nisl varius erat, id pellentesque turpis ipsum non nulla. Integer at nisi sapien. Integer varius in sem condimentum varius. Quisque efficitur sed arcu quis pellentesque. Fusce a dui diam. Nullam suscipit blandit tortor in dictum. In ultricies enim et sapien aliquam, quis auctor elit consequat.
+        </p>
+        <p>
+            Nulla fringilla ante id interdum ultricies. Nam ac laoreet nibh, vitae maximus arcu. Etiam quam diam, auctor ac tortor sed, dictum consequat leo. Praesent et convallis nibh. Sed fermentum, metus tristique feugiat accumsan, lorem velit consequat nulla, sit amet venenatis neque nibh id ante. Nunc dapibus, justo vel interdum rutrum, enim tortor semper lectus, ut ultricies orci quam id risus. Ut scelerisque tortor eu tincidunt lacinia. Morbi sollicitudin dignissim enim, eu aliquam lectus faucibus in. Nunc cursus ante erat, sed tincidunt nibh mattis quis.
+        </p>
+        <p>
+            Aenean quis risus justo. Cras finibus tortor vel ligula lacinia, vitae facilisis elit consequat. Fusce lobortis quam lobortis, pulvinar ex non, malesuada eros. Ut dolor orci, ornare vel dignissim a, eleifend ultrices nunc. Fusce felis purus, venenatis et tincidunt sed, ultrices a velit. Morbi pellentesque dui vel hendrerit consequat. Proin eget consequat est.
+        </p>
+        <p>
+            Proin vitae accumsan felis. Maecenas id luctus arcu, quis pharetra quam. Sed eu enim gravida, hendrerit nisl in, tempor justo. Nunc mollis a enim sed scelerisque. Suspendisse tempor libero a mauris vulputate porta. Donec commodo libero et sem fringilla gravida a vel ante. Nam sed vulputate libero. Etiam scelerisque scelerisque vestibulum. Cras sed rutrum lectus, imperdiet mattis urna. Fusce mattis erat non purus vestibulum, ac hendrerit eros viverra. Aenean non neque ac nulla blandit luctus. Sed nec leo volutpat, sodales lorem non, dictum turpis. Cras venenatis quam vel velit laoreet sodales. Proin elementum enim non porta molestie.
+        </p>
     </div>
 
     <div id="Green" class="content" style="background: lightgreen">
         <a id="Agreen"></a>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit nunc, euismod ut turpis at, sollicitudin porta lectus. Maecenas vehicula, nunc ac elementum feugiat, enim nibh commodo ante, eget dapibus lorem orci vel elit. Ut consequat tortor at arcu vestibulum consectetur. Quisque mattis augue in nulla eleifend, id cursus sapien aliquet. Pellentesque a efficitur ligula. Proin feugiat faucibus mattis. Nulla a mollis felis, eget faucibus justo. Mauris aliquet, justo in rutrum condimentum, ligula nisl varius erat, id pellentesque turpis ipsum non nulla. Integer at nisi sapien. Integer varius in sem condimentum varius. Quisque efficitur sed arcu quis pellentesque. Fusce a dui diam. Nullam suscipit blandit tortor in dictum. In ultricies enim et sapien aliquam, quis auctor elit consequat.
+        </p>
+        <p>
+            Nulla fringilla ante id interdum ultricies. Nam ac laoreet nibh, vitae maximus arcu. Etiam quam diam, auctor ac tortor sed, dictum consequat leo. Praesent et convallis nibh. Sed fermentum, metus tristique feugiat accumsan, lorem velit consequat nulla, sit amet venenatis neque nibh id ante. Nunc dapibus, justo vel interdum rutrum, enim tortor semper lectus, ut ultricies orci quam id risus. Ut scelerisque tortor eu tincidunt lacinia. Morbi sollicitudin dignissim enim, eu aliquam lectus faucibus in. Nunc cursus ante erat, sed tincidunt nibh mattis quis.
+        </p>
+        <p>
+            Aenean quis risus justo. Cras finibus tortor vel ligula lacinia, vitae facilisis elit consequat. Fusce lobortis quam lobortis, pulvinar ex non, malesuada eros. Ut dolor orci, ornare vel dignissim a, eleifend ultrices nunc. Fusce felis purus, venenatis et tincidunt sed, ultrices a velit. Morbi pellentesque dui vel hendrerit consequat. Proin eget consequat est.
+        </p>
+        <p>
+            Proin vitae accumsan felis. Maecenas id luctus arcu, quis pharetra quam. Sed eu enim gravida, hendrerit nisl in, tempor justo. Nunc mollis a enim sed scelerisque. Suspendisse tempor libero a mauris vulputate porta. Donec commodo libero et sem fringilla gravida a vel ante. Nam sed vulputate libero. Etiam scelerisque scelerisque vestibulum. Cras sed rutrum lectus, imperdiet mattis urna. Fusce mattis erat non purus vestibulum, ac hendrerit eros viverra. Aenean non neque ac nulla blandit luctus. Sed nec leo volutpat, sodales lorem non, dictum turpis. Cras venenatis quam vel velit laoreet sodales. Proin elementum enim non porta molestie.
+        </p>
     </div>
 
     <div id="Pink" class="content" style="background: lightpink">
         <a id="Apink"></a>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit nunc, euismod ut turpis at, sollicitudin porta lectus. Maecenas vehicula, nunc ac elementum feugiat, enim nibh commodo ante, eget dapibus lorem orci vel elit. Ut consequat tortor at arcu vestibulum consectetur. Quisque mattis augue in nulla eleifend, id cursus sapien aliquet. Pellentesque a efficitur ligula. Proin feugiat faucibus mattis. Nulla a mollis felis, eget faucibus justo. Mauris aliquet, justo in rutrum condimentum, ligula nisl varius erat, id pellentesque turpis ipsum non nulla. Integer at nisi sapien. Integer varius in sem condimentum varius. Quisque efficitur sed arcu quis pellentesque. Fusce a dui diam. Nullam suscipit blandit tortor in dictum. In ultricies enim et sapien aliquam, quis auctor elit consequat.
+        </p>
+        <p>
+            Nulla fringilla ante id interdum ultricies. Nam ac laoreet nibh, vitae maximus arcu. Etiam quam diam, auctor ac tortor sed, dictum consequat leo. Praesent et convallis nibh. Sed fermentum, metus tristique feugiat accumsan, lorem velit consequat nulla, sit amet venenatis neque nibh id ante. Nunc dapibus, justo vel interdum rutrum, enim tortor semper lectus, ut ultricies orci quam id risus. Ut scelerisque tortor eu tincidunt lacinia. Morbi sollicitudin dignissim enim, eu aliquam lectus faucibus in. Nunc cursus ante erat, sed tincidunt nibh mattis quis.
+        </p>
+        <p>
+            Aenean quis risus justo. Cras finibus tortor vel ligula lacinia, vitae facilisis elit consequat. Fusce lobortis quam lobortis, pulvinar ex non, malesuada eros. Ut dolor orci, ornare vel dignissim a, eleifend ultrices nunc. Fusce felis purus, venenatis et tincidunt sed, ultrices a velit. Morbi pellentesque dui vel hendrerit consequat. Proin eget consequat est.
+        </p>
+        <p>
+            Proin vitae accumsan felis. Maecenas id luctus arcu, quis pharetra quam. Sed eu enim gravida, hendrerit nisl in, tempor justo. Nunc mollis a enim sed scelerisque. Suspendisse tempor libero a mauris vulputate porta. Donec commodo libero et sem fringilla gravida a vel ante. Nam sed vulputate libero. Etiam scelerisque scelerisque vestibulum. Cras sed rutrum lectus, imperdiet mattis urna. Fusce mattis erat non purus vestibulum, ac hendrerit eros viverra. Aenean non neque ac nulla blandit luctus. Sed nec leo volutpat, sodales lorem non, dictum turpis. Cras venenatis quam vel velit laoreet sodales. Proin elementum enim non porta molestie.
+        </p>
     </div>
 
     <div id="Yellow" class="content" style="background: lightyellow">
         <a id="Ayellow"></a>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit nunc, euismod ut turpis at, sollicitudin porta lectus. Maecenas vehicula, nunc ac elementum feugiat, enim nibh commodo ante, eget dapibus lorem orci vel elit. Ut consequat tortor at arcu vestibulum consectetur. Quisque mattis augue in nulla eleifend, id cursus sapien aliquet. Pellentesque a efficitur ligula. Proin feugiat faucibus mattis. Nulla a mollis felis, eget faucibus justo. Mauris aliquet, justo in rutrum condimentum, ligula nisl varius erat, id pellentesque turpis ipsum non nulla. Integer at nisi sapien. Integer varius in sem condimentum varius. Quisque efficitur sed arcu quis pellentesque. Fusce a dui diam. Nullam suscipit blandit tortor in dictum. In ultricies enim et sapien aliquam, quis auctor elit consequat.
+        </p>
+        <p>
+            Nulla fringilla ante id interdum ultricies. Nam ac laoreet nibh, vitae maximus arcu. Etiam quam diam, auctor ac tortor sed, dictum consequat leo. Praesent et convallis nibh. Sed fermentum, metus tristique feugiat accumsan, lorem velit consequat nulla, sit amet venenatis neque nibh id ante. Nunc dapibus, justo vel interdum rutrum, enim tortor semper lectus, ut ultricies orci quam id risus. Ut scelerisque tortor eu tincidunt lacinia. Morbi sollicitudin dignissim enim, eu aliquam lectus faucibus in. Nunc cursus ante erat, sed tincidunt nibh mattis quis.
+        </p>
+        <p>
+            Aenean quis risus justo. Cras finibus tortor vel ligula lacinia, vitae facilisis elit consequat. Fusce lobortis quam lobortis, pulvinar ex non, malesuada eros. Ut dolor orci, ornare vel dignissim a, eleifend ultrices nunc. Fusce felis purus, venenatis et tincidunt sed, ultrices a velit. Morbi pellentesque dui vel hendrerit consequat. Proin eget consequat est.
+        </p>
+        <p>
+            Proin vitae accumsan felis. Maecenas id luctus arcu, quis pharetra quam. Sed eu enim gravida, hendrerit nisl in, tempor justo. Nunc mollis a enim sed scelerisque. Suspendisse tempor libero a mauris vulputate porta. Donec commodo libero et sem fringilla gravida a vel ante. Nam sed vulputate libero. Etiam scelerisque scelerisque vestibulum. Cras sed rutrum lectus, imperdiet mattis urna. Fusce mattis erat non purus vestibulum, ac hendrerit eros viverra. Aenean non neque ac nulla blandit luctus. Sed nec leo volutpat, sodales lorem non, dictum turpis. Cras venenatis quam vel velit laoreet sodales. Proin elementum enim non porta molestie.
+        </p>
     </div>
 
 
 </div>
 
 
-<button class="button" onClick="toTop()">
-To top
+<button class="buttonTop" onClick="toTop()">
+    To top
 </button>
 
-<div id="showScroll" class="scrollinfo">
+
+<div id="footer">
+
+    <h3>Footer</h3>
+
 </div>
-</body>
-
-
 
 <script>
-    function toTop() {
-        window.scroll({
-            top: 0,
-            left: 0,
-            behavior: 'smooth'
+
+    var links = document.querySelectorAll('#selectMenu a')
+    NodeList.prototype.addEventListener = function (event, handler){
+        this.forEach(function (elem) {
+            elem.addEventListener(event, handler);
         });
     }
 
-    
-    function myScroll() {
-        window.scrollBy(0, 50);
+    links.addEventListener('click',function () {
+        let targetId = this.innerHTML;
+        let y = document.getElementById(targetId).offsetTop;
+        window.scrollBy(0, y);
+        //alert (y);
+
+    });
+
+
+
+
+
+
+    function downScroll(){          // скроллинг
+        window.scrollBy(0, 20);
+    }
+
+    function toTop() {                  //ереход в верхнюю позицию
+        window.scroll({
+            top: 0,
+            left: 0,
+        });
+    }
+
+
+
+   // links.forEach(addEventListener('click', ) )
+
+
+
+    /*
+
+    window.onload = function () {
+        let clickItem = document.getElementById('grayMenuItem');
+        clickItem.onclick = function () {
+            alert("Gray");
         }
- 
+
+
+    }
+
+    /*
+        let timerId = setTimeout(function tick() {
+            console.log('ok');
+            window.scrollBy(0, 4);
+            timerId = setTimeout(tick, 2); // (*)
+        }, 2);
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('pinkMenuItem').click(alert('Pink'));
+        });
+
+
+
+
+
+
+    function linkJump(destName){
+        let myY = window.pageYOffset;
+        let targetY = document.getElementById(destName).offsetTop;
+        console.log(myY, targetY);
+
+    }
+    */
 </script>
+
+
+</body>
+
+
 </html>

@@ -81,14 +81,15 @@
 </head>
 <body>
 
-<button class="buttonDown" onclick="downScroll()" id="downButton">Scroll Down</button><br><br>
+<button class="buttonDown" onClick="downScroll()" id="downButton">Scroll Down</button><br><br>
+<button class="buttonTop" onClick="toTop()">To top</button>
 
 <div id="menu">
     <ul id="selectMenu">
-        <li id="grayMenuItem"><a href="" class="menuItem">Gray</a> </li>
-        <li id="greenMenuItem"><a href="" class="menuItem">Green</a> </li>
-        <li id="pinkMenuItem"><a href="" class="menuItem">Pink</a> </li>
-        <li id="yellowMenuItem"><a href="" class="menuItem">Yellow</a> </li>
+        <li id="grayMenuItem"><a  class="menuItem">Gray</a> </li>
+        <li id="greenMenuItem"><a  class="menuItem">Green</a> </li>
+        <li id="pinkMenuItem"><a  class="menuItem">Pink</a> </li>
+        <li id="yellowMenuItem"><a  class="menuItem">Yellow</a> </li>
     </ul>
 
 </div>
@@ -162,9 +163,6 @@
 </div>
 
 
-<button class="buttonTop" onClick="toTop()">
-    To top
-</button>
 
 
 <div id="footer">
@@ -175,7 +173,10 @@
 
 <script>
 
-    var links = document.querySelectorAll('#selectMenu a')
+
+
+
+    var links = document.querySelectorAll('#selectMenu a');
     NodeList.prototype.addEventListener = function (event, handler){
         this.forEach(function (elem) {
             elem.addEventListener(event, handler);
@@ -184,12 +185,15 @@
 
     links.addEventListener('click',function () {
         let targetId = this.innerHTML;
-        let y = document.getElementById(targetId).offsetTop;
-        window.scrollBy(0, y);
-        //alert (y);
+        let targetY = document.getElementById(targetId).offsetTop;
+        let y = window.pageYOffset;
+        let steps = Math.abs(targetY - y);
+        for (let i = 0; i < steps; i++) {
+            setTimeout(window.scrollBy(0, 1), 1000);
+            console.log(i);
+        }
 
     });
-
 
 
 

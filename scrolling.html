@@ -173,6 +173,12 @@
 
 <script>
 
+if(window.NodeList && !NodeList.prototype.forEach) {
+  NodeList.prototype.forEach = Array.prototype.forEach;
+}
+if(window.HTMLCollection && !HTMLCollection.prototype.forEach) {
+  HTMLCollection.prototype.forEach = Array.prototype.forEach;
+}
 
 
 
@@ -183,14 +189,28 @@
         });
     }
 
+/*
+    var links = document.querySelectorAll('#selectMenu a');
+
+    NodeList.prototype.addEventListener = function (event, handler){
+        for (let m = 0; m < links.length; m++){
+            function(links[m]) {
+            elem.addEventListener(event, handler);
+
+            };
+        }
+    }
+
+*/
+
     links.addEventListener('click',function () {
         let targetId = this.innerHTML;
-        let targetY = document.getElementById(targetId).offsetTop;
-        let y = window.pageYOffset;
+        let targetY = document.getElementById(targetId).offsetTop; //target div
+        let y = window.pageYOffset;                                //current position
         let steps = Math.abs(targetY - y);
         for (let i = 0; i < steps; i++) {
-            setTimeout(window.scrollBy(0, 1), 1000);
-            console.log(i);
+            setTimeout(window.scrollBy(0, (targetY > y ? 1 : -1)), 1000);
+           // console.log(i);
         }
 
     });
@@ -199,7 +219,7 @@
 
 
 
-    function downScroll(){          // скроллинг
+    function downScroll(){          // скроллинг вниз
         window.scrollBy(0, 20);
     }
 
@@ -217,37 +237,25 @@
 
 
     /*
-
     window.onload = function () {
         let clickItem = document.getElementById('grayMenuItem');
         clickItem.onclick = function () {
             alert("Gray");
         }
-
-
     }
-
     /*
         let timerId = setTimeout(function tick() {
             console.log('ok');
             window.scrollBy(0, 4);
             timerId = setTimeout(tick, 2); // (*)
         }, 2);
-
         document.addEventListener("DOMContentLoaded", function () {
             document.getElementById('pinkMenuItem').click(alert('Pink'));
         });
-
-
-
-
-
-
     function linkJump(destName){
         let myY = window.pageYOffset;
         let targetY = document.getElementById(destName).offsetTop;
         console.log(myY, targetY);
-
     }
     */
 </script>

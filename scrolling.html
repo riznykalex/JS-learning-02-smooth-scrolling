@@ -189,19 +189,43 @@ if(window.HTMLCollection && !HTMLCollection.prototype.forEach) {
         });
     }
 
-/*
-    var links = document.querySelectorAll('#selectMenu a');
+    var divs = document.querySelectorAll('div.content');
 
-    NodeList.prototype.addEventListener = function (event, handler){
-        for (let m = 0; m < links.length; m++){
-            function(links[m]) {
-            elem.addEventListener(event, handler);
+  /*
+    divs.addEventListener("scroll", function( event ) {   
+        
+        // highlight the mouseover target
+        // event.target.style.color = "orange";
+        alert('scroll!');
+        // reset the color after a short delay
+         setTimeout(function() {
+            event.target.style.color = "";
+        }, 500);
+        }, false);
+    */
 
-            };
+    let scrollPosition = 0;
+    let ticking = false;
+
+    window.addEventListener('scroll', function(e) {
+    scrollPosition = window.scrollY;
+
+    if (!ticking) {
+        window.requestAnimationFrame(function() {
+        
+        for (d=1; d < divs.length-1; d++){
+            if (scrollPosition > divs[d-1].offsetTop && scrollPosition < divs[d].offsetTop)
+             console.log(scrollPosition, divs[d-1].offsetTop, divs[d].offsetTop, divs[d-1].id);           
         }
-    }
+        
 
-*/
+        ticking = false;
+        });
+
+        ticking = true;
+    }
+    });
+
 
     links.addEventListener('click',function () {
         let targetId = this.innerHTML;
@@ -236,28 +260,8 @@ if(window.HTMLCollection && !HTMLCollection.prototype.forEach) {
 
 
 
-    /*
-    window.onload = function () {
-        let clickItem = document.getElementById('grayMenuItem');
-        clickItem.onclick = function () {
-            alert("Gray");
-        }
-    }
-    /*
-        let timerId = setTimeout(function tick() {
-            console.log('ok');
-            window.scrollBy(0, 4);
-            timerId = setTimeout(tick, 2); // (*)
-        }, 2);
-        document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById('pinkMenuItem').click(alert('Pink'));
-        });
-    function linkJump(destName){
-        let myY = window.pageYOffset;
-        let targetY = document.getElementById(destName).offsetTop;
-        console.log(myY, targetY);
-    }
-    */
+
+
 </script>
 
 

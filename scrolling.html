@@ -35,6 +35,9 @@
             border: 2px solid black;
         }
 
+        .selectedItem{
+            background-color: #ddd;
+        }
 
         .buttonTop {
             position: fixed;
@@ -58,6 +61,10 @@
             margin: 8px 8px;
         }
 
+        .menuItem {
+            color: black;
+            font-family: sans-serif;
+        }
         .scrollinfo{
             position: fixed;
             left: 0; bottom: 0;
@@ -94,7 +101,9 @@
 
 </div>
 <div id="main">
+    <div style="height: 50px">
 
+    </div>
     <div id="Gray" class="content" style="background: lightgray;">
         <a id="Agray"></a>
         <p>
@@ -173,12 +182,12 @@
 
 <script>
 
-if(window.NodeList && !NodeList.prototype.forEach) {
-  NodeList.prototype.forEach = Array.prototype.forEach;
-}
-if(window.HTMLCollection && !HTMLCollection.prototype.forEach) {
-  HTMLCollection.prototype.forEach = Array.prototype.forEach;
-}
+    if(window.NodeList && !NodeList.prototype.forEach) {
+        NodeList.prototype.forEach = Array.prototype.forEach;
+    }
+    if(window.HTMLCollection && !HTMLCollection.prototype.forEach) {
+        HTMLCollection.prototype.forEach = Array.prototype.forEach;
+    }
 
 
 
@@ -189,65 +198,38 @@ if(window.HTMLCollection && !HTMLCollection.prototype.forEach) {
         });
     }
 
-    var divs = document.querySelectorAll('div.content');
 
-  /*
-    divs.addEventListener("scroll", function( event ) {   
-        
-        // highlight the mouseover target
-        // event.target.style.color = "orange";
-        alert('scroll!');
-        // reset the color after a short delay
-         setTimeout(function() {
-            event.target.style.color = "";
-        }, 500);
-        }, false);
-    */
-
-    let scrollPosition = 0;
-    let ticking = false;
-
-    window.addEventListener('scroll', function(e) {
-    scrollPosition = window.scrollY;
-
-    if (!ticking) {
-        window.requestAnimationFrame(function() {
-        
-        for (d=1; d < divs.length-1; d++){
-            if (scrollPosition > divs[d-1].offsetTop && scrollPosition < divs[d].offsetTop)
-             console.log(scrollPosition, divs[d-1].offsetTop, divs[d].offsetTop, divs[d-1].id);           
-        }
-        
-
-        ticking = false;
-        });
-
-        ticking = true;
-    }
-    });
-
+    
 
     links.addEventListener('click',function () {
         let targetId = this.innerHTML;
-        let targetY = document.getElementById(targetId).offsetTop; //target div
-        let y = window.pageYOffset;                                //current position
-        let steps = Math.abs(targetY - y);
-        for (let i = 0; i < steps; i++) {
-            setTimeout(window.scrollBy(0, (targetY > y ? 1 : -1)), 1000);
-           // console.log(i);
-        }
+        let targetY = document.getElementById(targetId).offsetTop;
+
+        console.log(targetId, targetY, window.pageYOffset);
+        downScroll(targetY - 80);
 
     });
 
 
+    //window.scrollBy(0,4)
+
+
+    function downScroll(targetY){          // скроллинг
+        setTimeout(function (){
+            let y = window.pageYOffset || document.documentElement.scrollTop;
+            let pageHeight = document.body.offsetHeight;
+            let windowHeight = window.innerHeight;
+            window.scrollBy(0, (targetY > y ? 1 : -1));
+
+            if ((pageHeight - y) > windowHeight && y !== targetY)
+            setTimeout(arguments.callee, 1);
+            }, 1);
+            }
 
 
 
-    function downScroll(){          // скроллинг вниз
-        window.scrollBy(0, 20);
-    }
 
-    function toTop() {                  //ереход в верхнюю позицию
+    function toTop() {                  //переход в верхнюю позицию
         window.scroll({
             top: 0,
             left: 0,
@@ -256,9 +238,38 @@ if(window.HTMLCollection && !HTMLCollection.prototype.forEach) {
 
 
 
-   // links.forEach(addEventListener('click', ) )
+    var divs = document.querySelectorAll('div.content');
+    let scrollPosition = 0;
+    let ticking = false;
+
+    window.addEventListener('scroll', function(e) {
+        scrollPosition = window.scrollY;
+
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+
+                for (d=0; d < divs.length; d++){
+                    if (divs[d].offsetTop - scrollPosition < 100 && divs[d].offsetTop - scrollPosition > 0) {
+                        console.log(divs[d].id, divs[d].offsetTop - scrollPosition);
+                        links[d].classList.add("selectedItem");
+                    }else {links[d].classList.remove("selectedItem");}
+                }
+
+                ticking = false;
+            });
+
+            ticking = true;
+        }
+    });
 
 
+
+    function linkJump(destName){
+        let myY = window.pageYOffset;
+        let targetY = document.getElementById(destName).offsetTop;
+        console.log(myY, targetY);
+
+    }
 
 
 
